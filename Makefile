@@ -1,6 +1,6 @@
 CC = clang
 
-APP = conv_sharp.exe
+APP = conv_edge_vect.exe
 HEADERS = $(wildcard *.h)
 
 all: $(APP)
