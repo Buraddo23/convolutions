@@ -5,8 +5,8 @@
 #define W 1600
 #define H 1200
 
-typedef uint8_t __attribute__((ext_vector_type(3))) uint8_t3;
-typedef short   __attribute__((ext_vector_type(3))) short3;
+typedef char  __attribute__((ext_vector_type(3))) char3;
+typedef short __attribute__((ext_vector_type(3))) short3;
 
 #define convert_short3(x) __builtin_convertvector(x, short3)
 
@@ -57,9 +57,9 @@ void process() {
 			
 	for(y = 1; y < H-1; ++y) {
 		for(x = 1; x < W-1; ++x) {
-			uint8_t3 y0 = *(uint8_t3*)&in.y[y-1][x-1];
-			uint8_t3 y1 = *(uint8_t3*)&in.y[ y ][x-1];
-			uint8_t3 y2 = *(uint8_t3*)&in.y[y+1][x-1];
+			char3 y0 = *(char3*)&in.y[y-1][x-1];
+			char3 y1 = *(char3*)&in.y[ y ][x-1];
+			char3 y2 = *(char3*)&in.y[y+1][x-1];
 			
 			out.y[y][x] = (uint8_t) clampab_s(hsum_v3s(k0*convert_short3(y0) + k1*convert_short3(y1) + k2*convert_short3(y2)), 0, 255);
 		}
